@@ -28,7 +28,7 @@ resource "aws_eks_cluster" "main" {
   ]
 
   tags = merge(
-    var.tags_additional,
+    var.tags,
     {
       "Cluster" = var.name
     },
@@ -45,7 +45,7 @@ resource "aws_eks_access_entry" "admin" {
   type          = "STANDARD"
 
   tags = merge(
-    var.tags_additional,
+    var.tags,
     {
       "Cluster" = var.name
     },
@@ -73,7 +73,7 @@ resource "aws_eks_access_entry" "poweruser" {
   type          = "STANDARD"
 
   tags = merge(
-    var.tags_additional,
+    var.tags,
     {
       "Cluster" = var.name
     },
@@ -101,7 +101,7 @@ resource "aws_eks_access_entry" "readonly" {
   type          = "STANDARD"
 
   tags = merge(
-    var.tags_additional,
+    var.tags,
     {
       "Cluster" = var.name
     },
@@ -129,7 +129,7 @@ resource "aws_security_group" "eks" {
   vpc_id      = var.vpc_id
 
   tags = merge(
-    var.tags_additional,
+    var.tags,
     {
       "Cluster" = var.name
     },
@@ -152,7 +152,7 @@ resource "aws_vpc_security_group_ingress_rule" "eks" {
   cidr_ipv4         = each.value
 
   tags = merge(
-    var.tags_additional,
+    var.tags,
     {
       "Cluster" = var.name
     },
@@ -167,7 +167,7 @@ resource "aws_vpc_security_group_egress_rule" "eks" {
   cidr_ipv4         = "0.0.0.0/0"
 
   tags = merge(
-    var.tags_additional,
+    var.tags,
     {
       "Cluster" = var.name
     },
@@ -191,7 +191,7 @@ resource "aws_iam_role" "eks_cluster" {
     ]
   })
   tags = merge(
-    var.tags_additional,
+    var.tags,
     {
       "Cluster" = var.name
     },
@@ -298,7 +298,7 @@ resource "aws_eks_node_group" "main" {
   ]
 
   tags = merge(
-    var.tags_additional,
+    var.tags,
     {
       "Cluster" = var.name
     },
@@ -330,7 +330,7 @@ resource "aws_launch_template" "eks_launch_template" {
   tag_specifications {
     resource_type = "instance"
     tags = merge(
-      var.tags_additional,
+      var.tags,
       {
         "Cluster" = var.name,
         "Name"    = "${var.name}-${each.value.ng_name}-eks-node"
@@ -357,7 +357,7 @@ resource "aws_iam_role" "eks_node" {
     ]
   })
   tags = merge(
-    var.tags_additional,
+    var.tags,
     {
       "Cluster" = var.name
     },

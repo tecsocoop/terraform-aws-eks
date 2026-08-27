@@ -129,7 +129,7 @@ module "eks" {
     }
   }
 
-  tags_additional = {
+  tags = {
     "Environment" = "production"
   }
 }
@@ -251,7 +251,7 @@ resource "aws_iam_role_policy_attachment" "efs_csi" {
 | `cluster_readonly_role_arns`       | IAM role ARNs with read-only access.                                 | `list(string)`        | `[]`                 |
 | `nodes_groups`                     | Map of node group configurations (see keys below).                   | `map(object)`         | -                    |
 | `enable_prefix_delegation`         | Enable VPC CNI prefix delegation (~110 pods/node instead of ~35).    | string                | `"true"`             |
-| `tags_additional`                  | Additional tags applied to all resources.                            | `map(string)`         | `{}`                 |
+| `tags`                             | Additional tags applied to all resources.                            | `map(string)`         | `{}`                 |
 
 `nodes_groups` object keys:
 

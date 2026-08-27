@@ -132,7 +132,7 @@ variable "nodes_groups" {
   }))
 }
 
-variable "tags_additional" {
+variable "tags" {
   description = "Additional tags applied to all resources"
   type        = map(string)
   default     = {}
