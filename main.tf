@@ -84,7 +84,7 @@ resource "aws_eks_access_policy_association" "poweruser" {
   for_each      = toset(var.cluster_poweruser_role_arns)
   cluster_name  = aws_eks_cluster.main.name
   principal_arn = each.value
-  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSAdminPolicy"
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSAdminViewPolicy"
 
   access_scope {
     type = "cluster"
