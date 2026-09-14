@@ -189,7 +189,7 @@ resource "aws_iam_policy" "nodegroup_secondary" {
 | Variable                     | EKS policy                    | Capabilities                                                                                   |
 |------------------------------|-------------------------------|------------------------------------------------------------------------------------------------|
 | `cluster_admin_role_arns`    | `AmazonEKSClusterAdminPolicy` | Full cluster admin (equivalent to `cluster-admin` RBAC). Manages nodes, namespaces, RBAC, config. |
-| `cluster_poweruser_role_arns`    | `AmazonEKSAdminPolicy`        | Workload admin. Manages deployments, services, configmaps and RBAC within namespaces.          |
+| `cluster_poweruser_role_arns`    | `AmazonEKSAdminViewPolicy`        | Workload admin. Manages deployments, services, configmaps and RBAC within namespaces.          |
 | `cluster_readonly_role_arns` | `AmazonEKSViewPolicy`         | Read-only access to all cluster resources.                                                     |
 
 ### Node access via SSM Session Manager
